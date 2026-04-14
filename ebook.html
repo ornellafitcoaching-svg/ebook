@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Guide Complet – Ornella Fit Coaching · Édition 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -28,11 +28,12 @@ html { scroll-behavior:smooth; }
 body {
   font-family: 'Montserrat', sans-serif;
   background: var(--bg);
-  padding: 48px 20px;
+  padding: 0 0 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0;
+  min-height: 100vh;
 }
 
 /* ══════════════════════════════════════════
@@ -44,7 +45,7 @@ body {
   overflow: hidden;
   box-shadow: 0 24px 60px rgba(0,0,0,.28);
   position: relative;
-  margin-bottom: 48px;
+  margin-bottom: 0;
   border-radius: 4px;
 }
 .accent-bar { height: 5px; background: linear-gradient(90deg,var(--rose-pale) 0%,var(--rouge) 40%,var(--rose) 70%,var(--rouge) 100%); }
@@ -378,6 +379,60 @@ img { max-width: 100%; height: auto; display: block; }
   0%, 100% { transform:scale(1); opacity:1; }
   50% { transform:scale(1.35); opacity:.55; }
 }
+
+/* ══ FLOATING NAV MENU ══ */
+/* ══ FLOATING NAV (details/summary — no JS) ══ */
+#fab-nav {
+  position: fixed;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  right: 20px;
+  z-index: 9999;
+}
+#fab-nav summary {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--rouge) 100%);
+  box-shadow: 0 6px 20px rgba(184,58,46,.5);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  color: var(--white);
+  cursor: pointer;
+  list-style: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+#fab-nav summary::-webkit-details-marker { display: none; }
+#fab-nav summary::marker { display: none; }
+#fab-nav .fab-menu {
+  position: absolute;
+  bottom: 58px; right: 0;
+  background: rgba(28,18,18,.97);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(232,168,168,.2);
+  border-radius: 8px;
+  padding: 8px 0;
+  min-width: 210px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.5);
+}
+#fab-nav .fab-menu a {
+  display: block;
+  padding: 12px 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  color: rgba(255,255,255,.75);
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+#fab-nav .fab-menu a:active { background: rgba(232,168,168,.1); color: var(--rose-light); }
+#fab-nav .fab-menu .menu-sep {
+  height: 1px;
+  background: rgba(255,255,255,.07);
+  margin: 4px 0;
+}
+@media print { #fab-nav { display: none; } }
 </style>
 </head>
 <body>
@@ -385,7 +440,7 @@ img { max-width: 100%; height: auto; display: block; }
 <!-- ══════════════════════════════════════════
      PAGE 0 — COUVERTURE
 ══════════════════════════════════════════ -->
-<article class="page">
+<article class="page" id="page-0">
   <div class="accent-bar"></div>
   <div class="cover-body">
     <div class="cover-logo-area">
@@ -427,6 +482,10 @@ img { max-width: 100%; height: auto; display: block; }
         <div class="cover-strip-label">Potentiel en toi</div>
       </div>
     </div>
+    <div style="text-align:center;padding:28px 20px 8px;">
+      <a href="https://ornellafitcoaching-svg.github.io/ornellafitcoaching-tarifs/" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block;">Découvrir les formules de coaching →</a>
+      <div style="font-size:10px;font-weight:300;color:var(--muted);margin-top:10px;letter-spacing:.5px;">Présentiel · Hybride · Distanciel · Groupe</div>
+    </div>
   </div>
   <div class="bottom-bar"></div>
   <div class="page-label">Ornella Fit Coaching · Ton plus bel investissement, c'est toi.</div>
@@ -434,9 +493,8 @@ img { max-width: 100%; height: auto; display: block; }
 
 
 <!-- ══════════════════════════════════════════
-     PAGE 1 — INTRO : IDENTIFICATION
-══════════════════════════════════════════ -->
-<article class="page">
+     PAGE 1 — INTRO : IDENTIFICATION══════════════════════════════════════════ -->
+<article class="page" id="page-1">
   <div class="accent-bar"></div>
   <div class="sec-header">
     <div class="sec-num serif">01</div>
@@ -517,7 +575,7 @@ img { max-width: 100%; height: auto; display: block; }
 <!-- ══════════════════════════════════════════
      PAGE 2 — LES 9 ERREURS
 ══════════════════════════════════════════ -->
-<article class="page">
+<article class="page" id="page-2">
   <div class="accent-bar"></div>
   <div class="sec-header">
     <div class="sec-num serif">02</div>
@@ -639,6 +697,7 @@ img { max-width: 100%; height: auto; display: block; }
       <p class="cta-miroir-texte">Ce guide t'explique le <em>pourquoi</em>.<br>Le <em>comment</em> — programme, alimentation, ajustements — on le construit ensemble.<br><br>30 minutes de bilan suffisent pour identifier ce qui te bloque — et repartir avec un plan concret. Sans engagement. Sans pression.</p>
       <div class="cta-btns">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdFa38cvDMHdshvURRKrNTw2LiGhSMnPBLouNYer_ESqlOeGQ/viewform?usp=header" target="_blank" class="btn btn-primary">Je veux enfin des résultats visibles →</a>
+        <a href="https://ornellafitcoaching-svg.github.io/ornellafitcoaching-tarifs/" target="_blank" rel="noopener" class="btn btn-outline">Voir les formules & tarifs →</a>
       </div>
     </div>
 
@@ -651,7 +710,7 @@ img { max-width: 100%; height: auto; display: block; }
 <!-- ══════════════════════════════════════════
      PAGE 3 — LE VRAI PROBLÈME
 ══════════════════════════════════════════ -->
-<article class="page">
+<article class="page" id="page-3">
   <div class="accent-bar"></div>
   <div class="sec-header">
     <div class="sec-num serif">03</div>
@@ -750,7 +809,7 @@ img { max-width: 100%; height: auto; display: block; }
       <p class="cta-block-sub">Si tu te reconnais dans ce que tu viens de lire, je t'invite à réserver ton bilan personnalisé gratuit. En 30 minutes, on identifie ensemble exactement ce qui te bloque — et tu repars avec un plan d'action concret. Sans engagement. Sans pression.</p>
       <div class="cta-btns">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdFa38cvDMHdshvURRKrNTw2LiGhSMnPBLouNYer_ESqlOeGQ/viewform?usp=header" target="_blank" class="btn btn-primary">Je commence mon accompagnement personnalisé →</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdFa38cvDMHdshvURRKrNTw2LiGhSMnPBLouNYer_ESqlOeGQ/viewform?usp=header" target="_blank" class="btn btn-outline">Je réserve mon bilan sur-mesure</a>
+        <a href="https://ornellafitcoaching-svg.github.io/ornellafitcoaching-tarifs/" target="_blank" rel="noopener" class="btn btn-outline">Voir les formules & tarifs →</a>
       </div>
     </div>
 
@@ -763,7 +822,7 @@ img { max-width: 100%; height: auto; display: block; }
 <!-- ══════════════════════════════════════════
      PAGE 3B — POURQUOI TU N'Y ARRIVES PAS SEULE
 ══════════════════════════════════════════ -->
-<article class="page">
+<article class="page" id="page-4">
   <div class="accent-bar"></div>
   <div class="sec-header">
     <div class="sec-num serif">03</div>
@@ -875,7 +934,7 @@ img { max-width: 100%; height: auto; display: block; }
       <p class="cta-miroir-texte">30 minutes pour identifier ce qui te bloque — et poser les bases d'un plan qui correspond à ta vraie vie. Sans engagement. Sans pression.</p>
       <div class="cta-btns">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdFa38cvDMHdshvURRKrNTw2LiGhSMnPBLouNYer_ESqlOeGQ/viewform?usp=header" target="_blank" class="btn btn-primary">Je commence mon accompagnement personnalisé →</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdFa38cvDMHdshvURRKrNTw2LiGhSMnPBLouNYer_ESqlOeGQ/viewform?usp=header" target="_blank" class="btn btn-outline">Je réserve mon bilan sur-mesure</a>
+        <a href="https://ornellafitcoaching-svg.github.io/ornellafitcoaching-tarifs/" target="_blank" rel="noopener" class="btn btn-outline">Voir les formules & tarifs →</a>
       </div>
     </div>
 
@@ -888,7 +947,7 @@ img { max-width: 100%; height: auto; display: block; }
 <!-- ══════════════════════════════════════════
      PAGE 4 — CE QUI FONCTIONNE VRAIMENT
 ══════════════════════════════════════════ -->
-<article class="page">
+<article class="page" id="page-5">
   <div class="accent-bar"></div>
   <div class="sec-header">
     <div class="sec-num serif">04</div>
@@ -989,7 +1048,10 @@ img { max-width: 100%; height: auto; display: block; }
         <div style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:5px;">Prête à mettre ces 4 piliers en place ensemble ?</div>
         <div style="font-size:12px;color:var(--muted);line-height:1.55;">Je construis avec toi un programme qui intègre tous ces éléments — adapté à ta vie, pas à un idéal théorique.</div>
       </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdFa38cvDMHdshvURRKrNTw2LiGhSMnPBLouNYer_ESqlOeGQ/viewform?usp=header" target="_blank" class="btn btn-primary" style="white-space:nowrap;flex-shrink:0;">Je veux enfin des résultats visibles →</a>
+      <div style="display:flex;flex-direction:column;gap:8px;flex-shrink:0;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdFa38cvDMHdshvURRKrNTw2LiGhSMnPBLouNYer_ESqlOeGQ/viewform?usp=header" target="_blank" class="btn btn-primary" style="white-space:nowrap;">Je veux enfin des résultats visibles →</a>
+        <a href="https://ornellafitcoaching-svg.github.io/ornellafitcoaching-tarifs/" target="_blank" rel="noopener" class="btn btn-outline" style="white-space:nowrap;text-align:center;">Voir les formules →</a>
+      </div>
     </div>
 
   </div>
@@ -1001,7 +1063,7 @@ img { max-width: 100%; height: auto; display: block; }
 <!-- ══════════════════════════════════════════
      PAGE 5 — MON APPROCHE / COACH
 ══════════════════════════════════════════ -->
-<article class="page">
+<article class="page" id="page-6">
   <div class="accent-bar"></div>
   <div class="sec-header">
     <div class="sec-num serif">05</div>
@@ -1079,7 +1141,7 @@ img { max-width: 100%; height: auto; display: block; }
       <p class="cta-miroir-texte">30 minutes pour analyser ta situation, identifier tes blocages, et repartir avec un plan concret. <em>Sans engagement. Sans pression.</em></p>
       <div class="cta-btns">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdFa38cvDMHdshvURRKrNTw2LiGhSMnPBLouNYer_ESqlOeGQ/viewform?usp=header" target="_blank" class="btn btn-primary">Je commence mon accompagnement personnalisé →</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdFa38cvDMHdshvURRKrNTw2LiGhSMnPBLouNYer_ESqlOeGQ/viewform?usp=header" target="_blank" class="btn btn-outline">Je réserve mon bilan sur-mesure</a>
+        <a href="https://ornellafitcoaching-svg.github.io/ornellafitcoaching-tarifs/" target="_blank" rel="noopener" class="btn btn-outline">Voir les formules & tarifs →</a>
       </div>
     </div>
   </div>
@@ -1092,7 +1154,7 @@ img { max-width: 100%; height: auto; display: block; }
 <!-- ══════════════════════════════════════════
      BLOC CRÉDIBILITÉ — LIENS & PREUVES
 ══════════════════════════════════════════ -->
-<article class="page">
+<article class="page" id="page-7">
   <div class="accent-bar"></div>
   <div class="body-area" style="padding-top:44px;padding-bottom:44px;">
 
@@ -1133,7 +1195,7 @@ img { max-width: 100%; height: auto; display: block; }
       </a>
 
       <!-- Tarifs -->
-      <a href="https://tarifsornellafitcoaching.netlify.app/" target="_blank" rel="noopener"
+      <a href="https://ornellafitcoaching-svg.github.io/ornellafitcoaching-tarifs/" target="_blank" rel="noopener"
          style="display:flex;align-items:flex-start;gap:14px;background:rgba(232,168,168,.07);border:1.5px solid rgba(232,168,168,.22);border-radius:4px;padding:18px 20px;text-decoration:none;position:relative;overflow:hidden;">
         <div style="font-size:28px;flex-shrink:0;line-height:1;margin-top:2px;">💸</div>
         <div>
@@ -1170,7 +1232,7 @@ img { max-width: 100%; height: auto; display: block; }
 <!-- ══════════════════════════════════════════
      PAGE 6 — PASSAGE À L'ACTION (CTA FINAL)
 ══════════════════════════════════════════ -->
-<article class="page" style="background:linear-gradient(160deg,#383030 55%,#3e2c2c 100%);">
+<article class="page" id="page-8" style="background:linear-gradient(160deg,#383030 55%,#3e2c2c 100%);">
   <div class="accent-bar"></div>
 
   <div class="cta-page-body">
@@ -1193,18 +1255,17 @@ img { max-width: 100%; height: auto; display: block; }
       <div class="offer-card featured" style="position:relative;">
         <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--rose-light),var(--rose));color:var(--charcoal);font-size:8.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;white-space:nowrap;box-shadow:0 4px 16px rgba(232,168,168,.4);">⭐ Programme personnalisé recommandé</div>
         <div class="offer-icon" style="margin-top:10px;">💪</div>
-        <div class="offer-title">Programme Personnalisé</div>
-        <div class="offer-price serif"><sup>€</sup>59<span style="font-size:14px;font-family:'Montserrat',sans-serif;color:var(--muted);"> / mois</span></div>
-        <div class="offer-note" style="margin-bottom:16px;">Renouvelable · Selon ton évolution</div>
-        <p style="font-size:11.5px;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:14px;text-align:left;">Un accompagnement 100% sur mesure, construit à partir de ton bilan, adapté à ton corps, ton niveau et tes objectifs.</p>
+        <div class="offer-title">Programme Starter – 8 semaines</div>
+        <div class="offer-price serif"><sup>€</sup>79<span style="font-size:14px;font-family:'Montserrat',sans-serif;color:var(--muted);"> / 8 semaines</span></div>
+        <div class="offer-note" style="margin-bottom:16px;">Programme fixe avec vidéos intégrées</div>
+        <p style="font-size:11.5px;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:14px;text-align:left;">Soit moins de 1,40€ / jour — moins qu'un café</p>
         <ul class="offer-perks" style="text-align:left;">
-          <li>Programme d'entraînement personnalisé (musculation + cardio adapté)</li>
-          <li>Adapté à ton environnement : domicile, salle, extérieur, avec ou sans matériel</li>
-          <li>Jusqu'à 4–5 séances/semaine selon ton rythme</li>
-          <li>Suivi basé sur tes résultats : mensurations + ajustements</li>
-          <li>Vidéos explicatives pour chaque exercice</li>
-          <li>Objectifs clairs + progression structurée</li>
-          <li>Support par message pendant 1 mois</li>
+          <li>8 semaines de programme conçu pour ton corps, tes objectifs</li>
+          <li>Vidéos démo intégrées — tu n'as pas à deviner comment faire</li>
+          <li>Adapté salle ou domicile, avec ou sans matériel</li>
+          <li>Bilan complet en fin de programme</li>
+          <li>Pas de suivi hebdomadaire</li>
+          <li>Pas d'ajustements en cours de programme</li>
         </ul>
         <!-- Avant/Après -->
         <div style="margin:16px 0 14px;border-radius:4px;overflow:hidden;border:1px solid rgba(232,168,168,.2);">
@@ -1233,7 +1294,7 @@ img { max-width: 100%; height: auto; display: block; }
           <li>Présentation des solutions disponibles</li>
           <li>Sans pression, sans engagement obligatoire</li>
         </ul>
-        <a href="https://calendly.com/ornellafit-coaching/30min" target="_blank" class="btn btn-outline">Je réserve mon bilan sur-mesure →</a>
+        <a href="https://ornellafitcoaching-svg.github.io/ornellafitcoaching-tarifs/" target="_blank" rel="noopener" class="btn btn-outline">Voir les formules & tarifs →</a>
       </div>
     </div>
 
@@ -1299,7 +1360,7 @@ img { max-width: 100%; height: auto; display: block; }
 <!-- ══════════════════════════════════════════
      PAGE 7 — PARTAGE & PARRAINAGE
 ══════════════════════════════════════════ -->
-<article class="page" style="background:linear-gradient(160deg,#302626 0%,#332222 100%);">
+<article class="page" id="page-9" style="background:linear-gradient(160deg,#302626 0%,#332222 100%);">
   <div class="accent-bar"></div>
 
   <div class="partage-page-body">
@@ -1443,6 +1504,27 @@ img { max-width: 100%; height: auto; display: block; }
   <div class="bottom-bar"></div>
   <div class="page-label">Partage &amp; Parrainage · Ornella Fit Coaching</div>
 </article>
+
+<!-- ═══════════════════════════════════════
+     FLOATING NAV (details/summary — no JS)
+═══════════════════════════════════════ -->
+<details id="fab-nav">
+  <summary>☰</summary>
+  <div class="fab-menu">
+    <a href="#page-0">📖 Couverture</a>
+    <div class="menu-sep"></div>
+    <a href="#page-1">Ch.1 · Identification</a>
+    <a href="#page-2">Ch.2 · Les 9 erreurs</a>
+    <a href="#page-3">Ch.3 · Le vrai problème</a>
+    <a href="#page-4">Pourquoi seule ça bloque</a>
+    <a href="#page-5">Ch.4 · Ce qui fonctionne</a>
+    <a href="#page-6">Ch.5 · Mon approche</a>
+    <a href="#page-7">Preuves &amp; crédibilité</a>
+    <a href="#page-8">Ch.6 · Passage à l'action</a>
+    <div class="menu-sep"></div>
+    <a href="#page-9">🤝 Partage &amp; Parrainage</a>
+  </div>
+</details>
 
 </body>
 </html>
